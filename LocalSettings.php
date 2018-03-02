@@ -115,6 +115,10 @@ $wgRightsIcon = "";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
 
+/* Protect main page from editing */
+$wgNamespaceProtection[NS_MAIN] = array('edit-main');
+$wgGroupPermissions['sysop']['edit-main'] = true; //Only admins can edit the main page!
+
 # The following permissions were set based on your choice in the installer
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['*']['edit'] = false;
