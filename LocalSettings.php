@@ -51,11 +51,9 @@ $wgEnotifWatchlist = true; # UPO
 $wgEmailAuthentication = true;
 
 ## Database settings
-$wgDBtype = "mysql";
-$wgDBserver = "";
-$wgDBname = "";
-$wgDBuser = "";
-$wgDBpassword = "";
+/* This is not in the default settings */
+/* DB credentials are stored in another file, outside of mediawiki root folder */
+require_once('../database_settings.php');
 
 # MySQL specific settings
 $wgDBprefix = "";
