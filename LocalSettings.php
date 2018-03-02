@@ -119,6 +119,15 @@ $wgDiff3 = "/usr/bin/diff3";
 $wgNamespaceProtection[NS_MAIN] = array('edit-main');
 $wgGroupPermissions['sysop']['edit-main'] = true; //Only admins can edit the main page!
 
+define('HelpDeskNS',100); //define a namespace
+$wgNamespaceProtection[HelpDeskNS] = array('hdGroup-edit');//create a permission
+$wgGroupPermissions['HelpDeskUsers']['hdGroup-edit'] = true; //HelpDeskUsers group can only edit this namespace
+$wgGroupPermissions['sysop']['hdGroup-edit'] = true; //allow Admins to edit HelpDesk pages
+
+$wgExtraNamespaces = array(
+	HelpDeskNS => 'HelpDeskGroup' //This is the namespace in the URL
+);
+
 # The following permissions were set based on your choice in the installer
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['*']['edit'] = false;
@@ -135,5 +144,4 @@ wfLoadSkin( 'Vector' );
 
 # End of automatically generated settings.
 # Add more configuration options below.
-
 
