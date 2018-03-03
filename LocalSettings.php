@@ -51,9 +51,11 @@ $wgEnotifWatchlist = true; # UPO
 $wgEmailAuthentication = true;
 
 ## Database settings
-/* This is not in the default settings */
-/* DB credentials are stored in another file, outside of mediawiki root folder */
-require_once('../database_settings.php');
+$wgDBtype = "";
+$wgDBserver = "";
+$wgDBname = "";
+$wgDBuser = "";
+$wgDBpassword = "";
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -115,19 +117,6 @@ $wgRightsIcon = "";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
 
-/* Protect main page from editing */
-$wgNamespaceProtection[NS_MAIN] = array('edit-main');
-$wgGroupPermissions['sysop']['edit-main'] = true; //Only admins can edit the main page!
-
-define('HelpDeskNS',100); //define a namespace
-$wgNamespaceProtection[HelpDeskNS] = array('hdGroup-edit');//create a permission
-$wgGroupPermissions['HelpDeskUsers']['hdGroup-edit'] = true; //HelpDeskUsers group can only edit this namespace
-$wgGroupPermissions['sysop']['hdGroup-edit'] = true; //allow Admins to edit HelpDesk pages
-
-$wgExtraNamespaces = array(
-	HelpDeskNS => 'HelpDeskGroup' //This is the namespace in the URL
-);
-
 # The following permissions were set based on your choice in the installer
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['*']['edit'] = false;
@@ -145,3 +134,18 @@ wfLoadSkin( 'Vector' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+/* DB credentials are stored in another file, outside of mediawiki root folder */
+require_once('../database_settings.php');
+
+/* Protect main page from editing */
+$wgNamespaceProtection[NS_MAIN] = array('edit-main');
+$wgGroupPermissions['sysop']['edit-main'] = true; //Only admins can edit the main page!
+
+define('HelpDeskNS',100); //define a namespace
+$wgNamespaceProtection[HelpDeskNS] = array('hdGroup-edit');//create a permission
+$wgGroupPermissions['HelpDeskUsers']['hdGroup-edit'] = true; //HelpDeskUsers group can only edit this namespace
+$wgGroupPermissions['sysop']['hdGroup-edit'] = true; //allow Admins to edit HelpDesk pages
+
+$wgExtraNamespaces = array(
+	HelpDeskNS => 'HelpDeskGroup' //This is the namespace in the URL
+);
