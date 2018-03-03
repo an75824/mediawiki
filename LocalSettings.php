@@ -146,6 +146,14 @@ $wgNamespaceProtection[HelpDeskNS] = array('hdGroup-edit');//create a permission
 $wgGroupPermissions['HelpDeskUsers']['hdGroup-edit'] = true; //HelpDeskUsers group can only edit this namespace
 $wgGroupPermissions['sysop']['hdGroup-edit'] = true; //allow Admins to edit HelpDesk pages
 
+define('DevelopersNS',101); //define a namespace
+$wgNamespaceProtection[DevelopersNS] = array('devsGroup-edit');//create a permission
+$wgGroupPermissions['DevUsers']['devsGroup-edit'] = true; //DevUsers group can only edit this namespace
+$wgGroupPermissions['sysop']['devsGroup-edit'] = true; //allow Admins to edit DevGroup pages
+
+/* The URL for a new page will be http://$wgServer/index.php/NAMESPACE_VARIABLE:page_name */
+/* i.e. in this case, http://192.168.175.148/mediawiki/index.php/developers:moodle_upgrade */
 $wgExtraNamespaces = array(
-	HelpDeskNS => 'HelpDeskGroup' //This is the namespace in the URL
+	HelpDeskNS => 'HelpDeskGroup',
+	DevelopersNS => 'Developers'
 );
