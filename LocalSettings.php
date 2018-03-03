@@ -141,15 +141,21 @@ require_once('../database_settings.php');
 $wgNamespaceProtection[NS_MAIN] = array('edit-main');
 $wgGroupPermissions['sysop']['edit-main'] = true; //Only admins can edit the main page!
 
+/* Protect the User namespace */
+$wgNamespaceProtection[NS_USER] = array('user-pages');
+$wgGroupPermissions['sysop']['user-pages'] = true; //Only admins have the right to edit User namespace pages
+
 define('HelpDeskNS',100); //define a namespace
 $wgNamespaceProtection[HelpDeskNS] = array('hdGroup-edit');//create a permission
 $wgGroupPermissions['HelpDeskUsers']['hdGroup-edit'] = true; //HelpDeskUsers group can only edit this namespace
 $wgGroupPermissions['sysop']['hdGroup-edit'] = true; //allow Admins to edit HelpDesk pages
+$wgRevokePermissions['HelpDeskUsers']['editmyprivateinfo'] = true; //Disable prefs editing
 
 define('DevelopersNS',101); //define a namespace
 $wgNamespaceProtection[DevelopersNS] = array('devsGroup-edit');//create a permission
 $wgGroupPermissions['DevUsers']['devsGroup-edit'] = true; //DevUsers group can only edit this namespace
 $wgGroupPermissions['sysop']['devsGroup-edit'] = true; //allow Admins to edit DevGroup pages
+$wgRevokePermissions['DevUsers']['editmyprivateinfo'] = true; //Disable preferences editing
 
 /* The URL for a new page will be http://$wgServer/index.php/NAMESPACE_VARIABLE:page_name */
 /* i.e. in this case, http://192.168.175.148/mediawiki/index.php/developers:moodle_upgrade */
